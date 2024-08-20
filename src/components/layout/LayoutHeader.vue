@@ -2,56 +2,51 @@
     <div class="header-box">
         <div class="photo-box">
             <img src="@/assets/images/logo.png" style="width: 260px;">
-            <div class="photo-title">
-                <div v-for=" i in categoryList" :key="i.id">{{ i.name }}</div>
+
+            <ul class="photo-title">
+
+                <li>
+                    <RouterLink to="/">首页</RouterLink>
+                </li>
+                <!-- <li v-for=" i in categoryStore.categoryList" :key="i.id">
+                    <RouterLink active-class="active" style="margin-left: 18px;" :to="`/category/${i.id}`">{{ i.name }}
+                    </RouterLink>
+                </li> -->
+
+            </ul>
+            <div class="input-box">
+                <el-input placeholder="搜一搜" :prefix-icon="Search"></el-input>
             </div>
         </div>
-        <div class="input-box">
-            <el-input placeholder="搜一搜" :prefix-icon="Search"></el-input>
-        </div>
-
     </div>
 </template>
 <script setup>
 import { Search } from '@element-plus/icons-vue'
-import { getCategoryList } from '@/apis/home'
-import { ref, onMounted } from 'vue'
-const categoryList = ref([])
-onMounted(async () => {
-    try {
-        let result = await getCategoryList()
-        categoryList.value = result.result
-    } catch (error) {
-
-    }
-
-})
+// 从仓库中获取分类列表数据categoryList
+import { useCategoryStore } from '@/stores/category'
+const categoryStore = useCategoryStore()
 
 </script>
 <style scoped lang="scss">
 .header-box {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
     .photo-box {
         display: flex;
+        justify-content: space-around;
 
         .photo-title {
             display: flex;
-            align-items: center;
-
-            div {
-                margin: auto 20px;
-                padding-top: 20px;
-                // align-items: center;
-            }
+            justify-content: space-around;
+            padding-top: 60px;
         }
     }
 
     .input-box {
-        padding-top: 20px;
+        padding-top: 30px;
     }
 
+    .active {
+        color: $xtxColor;
+        border-bottom: 1px solid $xtxColor;
+    }
 }
 </style>
