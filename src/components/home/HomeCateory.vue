@@ -16,7 +16,7 @@
                 <ul class="ul-box">
                     <li v-for="i in curLi" :key="i.id" class="child-li">
                         <div style="width: 150px;">
-                            <img :src="i.picture">
+                            <img v-lazy-img="i.picture">
                         </div>
                         <div class="text-box">
                             <div>{{ i.name }}</div>
