@@ -32,3 +32,9 @@ export const findHotAPI = () => {
         url: '/home/hot'
     })
 }
+// 获取全部商品数据
+export const getAllGoods = () => {
+    return httpInatance({
+        url: '/home/goods'
+    })
+}

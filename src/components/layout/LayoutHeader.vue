@@ -8,11 +8,10 @@
                 <li>
                     <RouterLink to="/">首页</RouterLink>
                 </li>
-                <!-- <li v-for=" i in categoryStore.categoryList" :key="i.id">
+                <li v-for=" i in categoryStore.categoryList" :key="i.id">
                     <RouterLink active-class="active" style="margin-left: 18px;" :to="`/category/${i.id}`">{{ i.name }}
                     </RouterLink>
-                </li> -->
-
+                </li>
             </ul>
             <div class="input-box">
                 <el-input placeholder="搜一搜" :prefix-icon="Search"></el-input>

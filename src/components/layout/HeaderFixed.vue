@@ -1,8 +1,14 @@
 <template>
     <div class="header-box" :class="{ show: y > 140 }">
-        <div class="photo-title">
-            <div v-for=" i in categoryStore.categoryList" :key="i.id">{{ i.name }}</div>
-        </div>
+        <ul class="photo-title">
+            <li>
+                <RouterLink to="/">首页</RouterLink>
+            </li>
+            <li v-for=" i in categoryStore.categoryList" :key="i.id">
+                <RouterLink active-class="active" style="margin-left: 18px;" :to="`/category/${i.id}`">{{ i.name }}
+                </RouterLink>
+            </li>
+        </ul>
     </div>
 </template>
 <script setup>
@@ -35,9 +41,11 @@ const { y } = useScroll(window)
 
     .photo-title {
         display: flex;
+        justify-content: space-around;
         align-items: center;
         background-color: rgb(169, 212, 167);
         height: 50px;
+        width: 60vw;
 
         div {
             margin: 0 45px;
