@@ -1,9 +1,12 @@
 import httpInatance from '@/utils/http.js'
 
 // 获取首页分类数据
-export const getCategoryList = () => {
+export const getCategoryList = (distributionSite = 1) => {
     return httpInatance({
-        url: '/home/category'
+        url: '/home/category',
+        params: {
+            distributionSite
+        }
     })
 }
 // 获取轮播图数据

@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { getImgList } from '@/apis/home'
 export const useImgStore = defineStore('imgStore', () => {
     const imgList = ref([])
+    const imgList2 = ref([])
     // 获取轮播图图片地址数据
     const getImgListData = async () => {
         try {
@@ -14,5 +15,14 @@ export const useImgStore = defineStore('imgStore', () => {
             console.error('error')
         }
     }
-    return { imgList, getImgListData }
+
+    const getImgListData2 = async () => {
+        try {
+            let res = await getImgList('2')
+            imgList2.value = res.result
+        } catch (error) {
+            console.error('error')
+        }
+    }
+    return { imgList, getImgListData, imgList2, getImgListData2 }
 })
