@@ -11,6 +11,14 @@
         </el-carousel-item>
     </el-carousel>
 
+    <!-- 类别渲染 -->
+    <div class="category-box">
+        <div v-for="item in childList.children" :key="item.id" class="category-singal">
+            <img v-lazy-img="item.picture">
+            <div>{{ item.name }}</div>
+        </div>
+    </div>
+
     <!-- 商品渲染 -->
     <div v-for="i in childList.children" :key="i.id">
         <!--  -->
@@ -32,6 +40,7 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
+import { onBeforeRouteUpdate } from 'vue-router'
 import { useRoute } from 'vue-router'
 import { useImgStore } from '@/stores/img.js'
 import { getChildList } from '@/apis/category.js'
@@ -39,15 +48,24 @@ const route = useRoute()
 const childList = ref([])
 const getImgList = useImgStore()
 
-
-onMounted(async () => {
+const getList = async (id = route.params.id) => {
     try {
         getImgList.getImgListData2()
-        let res = await getChildList(route.params.id)
+        let res = await getChildList(id)
         childList.value = res.result
+        console.log(childList.value, 'value');
     } catch (error) {
         console.log(err, 'err');
     }
+}
+onMounted(() => {
+    getList()
+})
+
+// 解决路由缓存问题
+onBeforeRouteUpdate((to) => {
+    // console.log('路由变化了');
+    getList(to.params.id)
 })
 </script>
 <style scoped lang="scss">
@@ -74,7 +92,11 @@ onMounted(async () => {
         }
 
         .name {
+            width: 120px;
             text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .desc {
@@ -91,5 +113,23 @@ onMounted(async () => {
         }
     }
 
+}
+
+.category-box {
+    display: flex;
+
+    .category-singal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+
+        img {
+            width: 230px;
+            height: 200px;
+        }
+
+    }
 }
 </style>
