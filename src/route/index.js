@@ -19,11 +19,25 @@ const route = [
             {
                 path: 'category/:id',
                 name: 'category',
-                component: () => import('@/views/CategoryView.vue')
+                component: () => import('@/views/CategoryView.vue'),
+
             },
+            // 物品展示
+            {
+                path: 'categoryList/:id',
+                name: 'categoryList',
+                component: () => import('@/views/CategoryList.vue')
+            },
+            // 详细物品信息
+            {
+                path: 'goods/:id',
+                name: 'goods',
+                component: () => import('@/views/SubGoods.vue')
+            }
 
         ]
     },
+
 
 ]
 export default route

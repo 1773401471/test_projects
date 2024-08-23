@@ -3,7 +3,7 @@ import route from '@/route/index'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: route
+  routes: route,
   // routes: [
   //   {
   //     path: '/login',
@@ -29,6 +29,11 @@ const router = createRouter({
   //   },
 
   // ]
+  scrollBehavior() {
+    return {
+      top: 0  //路由切换时回到页面顶部
+    }
+  }
 })
 
 export default router

@@ -38,8 +38,9 @@ onMounted(async () => {
     display: flex;
     justify-content: space-between;
 
+
     .img-box {
-        width: 250px;
+        width: 20vw;
     }
 
     .right-list-box {

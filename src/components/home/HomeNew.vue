@@ -1,19 +1,12 @@
 <template>
     <HomeBox title="新鲜好物" subTitle="卫生级的 噢诶有事">
-        <div class="img-container">
-            <div class="part-container" v-for="i in hotList" :key="i.id">
-                <img :src="i.picture" class="img">
-                <div class="name">{{ i.name }}</div>
-                <div class="price">￥{{ i.price }}</div>
-            </div>
+        <div>
+            <HomeSmallImg :imgList="hotList"></HomeSmallImg>
         </div>
     </HomeBox>
     <HomeBox title="热卖推荐" subTitle="热卖商品 特价抢购">
-        <div class="img-container">
-            <div class="part-container" v-for="i in newList" :key="i.id">
-                <img :src="i.picture" class="img">
-                <span>{{ i.title }} --{{ i.alt }}</span>
-            </div>
+        <div>
+            <HomeSmallImg :imgList="newList"></HomeSmallImg>
         </div>
     </HomeBox>
 </template>
@@ -21,6 +14,7 @@
 import HomeBox from './HomeBox.vue';
 import { findNewAPI, findHotAPI } from '@/apis/home'
 import { ref, onMounted, defineProps } from 'vue'
+import HomeSmallImg from './HomeSmallImg.vue';
 const hotList = ref([])
 const newList = ref([])
 defineProps(['title', 'subTitle'])

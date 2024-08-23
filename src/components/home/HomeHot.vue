@@ -4,16 +4,13 @@
             <div>热卖商品</div>
             <div>卫生级的 噢诶有事</div>
         </div>
-        <div class="part-container" v-for="i in hotList" :key="i.id">
-            <img :src="i.picture" class="img">
-            <div class="name">{{ i.name }}</div>
-            <div class="price">￥{{ i.price }}</div>
-        </div>
+        <HomeSmallImg :imgList="hotList"></HomeSmallImg>
     </div>
 </template>
 <script setup>
 import { findNewAPI } from '@/apis/home'
 import { ref, onMounted } from 'vue'
+import HomeSmallImg from './HomeSmallImg.vue';
 const hotList = ref([])
 onMounted(async () => {
     try {

@@ -48,7 +48,6 @@ onMounted(async () => {
 })
 const getli = (item) => {
     curLi.value = item.goods
-    console.log(curLi.value, 'curli');
 }
 
 </script>

@@ -1,7 +1,5 @@
 <template>
     <HomeDetail></HomeDetail>
-    <!-- <HomeDetail></HomeDetail>
-    <HomeDetail></HomeDetail> -->
 </template>
 <script setup>
 import HomeDetail from './HomeDetail.vue';

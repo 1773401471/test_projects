@@ -37,15 +37,17 @@ const { y } = useScroll(window)
         transition: all .3s linear;
         transform: none;
         opacity: 1;
+        z-index:99999;
     }
 
     .photo-title {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background-color: rgb(169, 212, 167);
+        background-color: rgb(204, 209, 203);
         height: 50px;
         width: 60vw;
+        border-radius: 20px;
 
         div {
             margin: 0 45px;
